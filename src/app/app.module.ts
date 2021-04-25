@@ -12,14 +12,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card'; 
-import { FlexLayoutModule } from '@angular/flex-layout'; 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HeaderComponent } from './shared/components/header/header.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     ExplorerComponent,
     DetailsComponent,
-    ReposListComponent
+    ReposListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
