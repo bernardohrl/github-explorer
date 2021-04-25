@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExplorerComponent } from './views/explorer/explorer.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: ExplorerComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
