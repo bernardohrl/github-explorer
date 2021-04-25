@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Repository } from 'src/app/models/repository.model';
 
 @Component({
   selector: 'app-repos-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./repos-list.component.scss']
 })
 export class ReposListComponent implements OnInit {
+
+  @Input() repositories!: Repository[];
 
   constructor() { }
 
