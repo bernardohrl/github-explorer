@@ -3,7 +3,7 @@
     <form fxLayout="row" fxLayoutAlign="center start" class="md-margin">
         <mat-form-field class="example-full-width">
           <mat-label>Search User</mat-label>
-          <input matInput (keyup)="typeUsername($event)">
+          <input matInput (keyup)="typeUsername($event)" value="{{username}}">
         </mat-form-field>
         <button mat-flat-button color="primary" (click)="getRepositories($event)">Search</button>
     </form>

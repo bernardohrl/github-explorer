@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+.container {
+    margin: 5%;
+}
+
+.lista-issues {
+    margin-top: 10%;
+    height: 100%;
+}
+
+.issue {
+    cursor: pointer;
+    margin-top: 2%;
+}

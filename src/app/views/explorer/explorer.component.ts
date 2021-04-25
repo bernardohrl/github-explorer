@@ -10,13 +10,14 @@ import { RepositoriesService } from 'src/app/shared/service/repositories.service
 export class ExplorerComponent implements OnInit {
 
   public repositories!: Repository[];
-  private username!: string;
+  public username: string = 'bernardohrl';
 
   constructor(
     public repoService: RepositoriesService
   ) { }
 
   ngOnInit(): void {
+    this.getRepositories();
   }
 
   public typeUsername(event: any) {
@@ -24,8 +25,8 @@ export class ExplorerComponent implements OnInit {
     console.log(this.username)
   }
 
-  public getRepositories(event: Event) {
-    event.preventDefault();
+  public getRepositories(event?: Event) {
+    event? event.preventDefault(): null;
 
     console.log("alou??")
 
@@ -35,7 +36,7 @@ export class ExplorerComponent implements OnInit {
         console.log(this.repositories)
       },
       (error) => {
-        console.log("coloar a mensgem de que não encontrou")
+        console.error("coloar a mensgem de que não encontrou")
       }
     )
   }

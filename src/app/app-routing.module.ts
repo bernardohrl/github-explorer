@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ExplorerComponent
   },
   {
-    path: 'details',
+    path: 'details/:username/:repoName',
     component: DetailsComponent
   }
 ];

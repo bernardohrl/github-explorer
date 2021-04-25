@@ -1,5 +1,6 @@
 export class Issue {
     id!: number;
+    html_url!: string;
     title!: string;
     user!: {
         login: string;
