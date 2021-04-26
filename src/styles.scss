@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+$primary-background-color: #042959;
+$secondary-background-color: #F3F3F3;
+$tertiary-background-color: #051026;
+
+$primary-letter-color: #fff;
+$secondary-letter-color: #000;
+$tertiary-letter-color: #A8A8B3;
+
+
+html, body { 
+    height: 100%;
+    background-color: $primary-background-color;
+    color: $primary-letter-color;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

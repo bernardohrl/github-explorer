@@ -1,15 +1,57 @@
-@import '~@angular/material/theming';
+@import '../../../styles.scss';
 
 .container {
     margin: 5%;
+
+    mat-card-header{
+        .left {
+            @media screen and (min-width: 960px) {
+                max-width: 50%;
+            }
+            
+            mat-card-title{
+                margin-bottom: 30px;
+                font-size: 2em;
+            }
+        }
+
+        .stats {
+            flex: auto;
+            float: right;
+
+            mat-card + mat-card {
+                @media screen and (min-width: 960px) {
+                    margin-left: 2%;
+                }
+            }
+        }
+    }
+
+
+    .lista-issues {
+        margin-top: 5%;
+        height: 100%;
+    }
+    
+    
+
+    .issue {
+        cursor: pointer;
+        margin-top: 2%;
+
+        small {
+            color: $tertiary-letter-color;
+        }
+
+        .label.mat-card {
+            padding: 5px;
+        }
+
+        .label.mat-card + .label.mat-card {
+            @media screen and (min-width: 960px) {
+                margin-left: 5px;
+            }
+        }
+    }
 }
 
-.lista-issues {
-    margin-top: 10%;
-    height: 100%;
-}
-
-.issue {
-    cursor: pointer;
-    margin-top: 2%;
-}

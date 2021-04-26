@@ -1,3 +1,47 @@
+@import '../../../styles.scss';
+
 .pesquisa {
+
     margin-top: 5%;
+
+    .search-button {
+        height: 55px;
+        position: relative;
+        top: -10px;
+    }
+}
+
+
+
+
+::ng-deep {
+    .mat-form-field {
+        .mat-input-element {
+            color: $primary-letter-color;
+        }
+        .mat-form-field-label {
+            color: $primary-letter-color;
+        }
+        .mat-form-field-underline {
+            background-color: $primary-letter-color;
+        }
+        .mat-form-field-ripple {
+            background-color: $primary-letter-color;
+        }
+        .mat-form-field-required-marker {
+            color: $primary-letter-color;
+        }
+    }
+
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+        color: $primary-letter-color;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: $primary-letter-color;
+        // opacity: 1;
+    }
+    .mat-form-field.mat-focused .mat-form-field-label {
+        color: $primary-letter-color;
+    }
+
 }

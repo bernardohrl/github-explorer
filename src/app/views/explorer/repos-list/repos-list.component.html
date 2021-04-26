@@ -1,19 +1,17 @@
 <div fxLayout="row wrap" fxLayoutAlign="start none" style="padding: 5%;">
     <ng-container *ngFor="let repository of repositories; let i = index">
-        <mat-card class="repo-card"
-            fxFlex="0 1 calc(33%-10px)"
-            fxFlex.lt-md="0 1 calc(50%-10px)"
+        <mat-card
+            fxFlex="0 1 calc(33%-2%)"
+            fxFlex.lt-md="0 1 calc(50%-2%)"
             fxFlex.lt-sm="0 1 100%"
-
-            routerLink = "details/{{repository.owner.login}}/{{repository.name}}"
-            >
+            routerLink = "details/{{repository.owner.login}}/{{repository.name}}">
             <mat-card-header>
             </mat-card-header>
             <mat-card-content>
               <p>
                 {{repository.name}}
               </p>
-              <p>
+              <p class="description">
                 {{repository.description}}
               </p>
             </mat-card-content>

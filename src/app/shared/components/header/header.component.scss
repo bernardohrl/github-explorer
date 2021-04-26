@@ -1,8 +1,24 @@
+@import '../../../../styles.scss';
+
 .header {
     font-size: 1.5rem;
     height: 80px;
 
     .mat-icon {
         padding: 0 10px;
+    }
+
+    background-color: $primary-background-color;
+    color: $primary-letter-color;
+    position: relative;
+
+    ::before {
+        content : "";
+        position: absolute;
+        left    : 2.5%;
+        bottom  : 0;
+        height  : 0.1px;
+        width   : 95%;  /* or 100px */
+        border-bottom: 0.1px solid $primary-letter-color;
     }
 }
