@@ -4,7 +4,8 @@
 
         <mat-form-field appearance="outline" >
             <mat-label>Search User</mat-label>
-            <input matInput (keyup)="typeUsername($event)" value="{{username}}">
+            <input matInput [formControl]="username">
+            <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         
         

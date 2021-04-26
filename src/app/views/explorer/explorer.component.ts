@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, ValidatorFn, Validators } from '@angular/forms';
 import { Repository } from 'src/app/models/repository.model';
 import { RepositoriesService } from 'src/app/shared/service/repositories.service';
 
@@ -10,35 +11,49 @@ import { RepositoriesService } from 'src/app/shared/service/repositories.service
 export class ExplorerComponent implements OnInit {
 
   public repositories!: Repository[];
-  public username: string = 'bernardohrl';
+  public username = new FormControl('', [Validators.required, this.validUserNameValidator()]);
 
   constructor(
     public repoService: RepositoriesService
   ) { }
 
   ngOnInit(): void {
-    this.getRepositories();
   }
 
-  public typeUsername(event: any) {
-    this.username = event.target.value;
-    console.log(this.username)
-  }
-
+  // GET REPOS
   public getRepositories(event?: Event) {
     event? event.preventDefault(): null;
+    
+    this.username.setErrors(null)
+    
 
-    console.log("alou??")
-
-    this.repoService.getUsersRepositories(this.username).subscribe(
+    this.repoService.getUsersRepositories(this.username.value).subscribe(
       (repos) => {
         this.repositories = repos;
-        console.log(this.repositories)
+        
       },
       (error) => {
-        console.error("coloar a mensgem de que não encontrou")
+        this.username.setErrors({validUserName: { }})
       }
     )
+  }
+
+
+
+  // HANDLE ERRROS
+  validUserNameValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      return {validUserName: {value: true}};
+    };
+  }
+
+
+  getErrorMessage() {
+    if (this.username.hasError('required')) {
+      return 'You must enter a value.';
+    }
+
+    return this.username.hasError('validUserName') ? 'Not a valid username' : '';
   }
 
 }

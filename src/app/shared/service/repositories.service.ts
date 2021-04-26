@@ -17,7 +17,6 @@ export class RepositoriesService {
   ) {}
 
   public getUsersRepositories(user: string): Observable<[Repository]> {
-    console.log(this.baseUrl + "users/"+ user + "/repos")
     return this.httpClient.get<[Repository]>(this.baseUrl + "users/"+ user + "/repos")
   }
 

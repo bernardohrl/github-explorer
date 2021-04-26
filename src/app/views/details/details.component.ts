@@ -30,20 +30,17 @@ export class DetailsComponent implements OnInit {
     this.repoService.getRepositoryInfo(this.username, this.repoName).subscribe(
       (repos) => {
         this.repoInfo = repos;
-        console.log(this.repoInfo)
       }
     )
 
     this.repoService.getRepositoryIssues(this.username, this.repoName).subscribe(
       (issues) => {
         this.issues = issues;
-        console.log(this.issues)
       }
     )
   }
 
   public goToIssue(issue: Issue) {
-    console.log(issue)
     window.location.assign(issue.html_url);
   }
 
