@@ -8,7 +8,7 @@ import { Repository } from 'src/app/models/repository.model';
 })
 export class ReposListComponent implements OnInit {
 
-  @Input() repositories!: Repository[];
+  @Input() repositories!: Repository[] | null;
 
   constructor() { }
 

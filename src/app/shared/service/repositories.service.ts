@@ -16,15 +16,15 @@ export class RepositoriesService {
     private httpClient: HttpClient
   ) {}
 
-  public getUsersRepositories(user: string): Observable<[Repository]> {
-    return this.httpClient.get<[Repository]>(this.baseUrl + "users/"+ user + "/repos")
+  public getUsersRepositories(user: string): Observable<Repository[]> {
+    return this.httpClient.get<Repository[]>(this.baseUrl + "users/"+ user + "/repos")
   }
 
   public getRepositoryInfo(user: string, repoName: string): Observable<Repository> {
     return this.httpClient.get<Repository>(this.baseUrl + "repos/" + user + "/" +repoName)
   }
 
-  public getRepositoryIssues(user: string, repoName: string): Observable<[Issue]> {
-    return this.httpClient.get<[Issue]>(this.baseUrl + "repos/" + user + "/" +repoName +"/issues")
+  public getRepositoryIssues(user: string, repoName: string): Observable<Issue[]> {
+    return this.httpClient.get<Issue[]>(this.baseUrl + "repos/" + user + "/" +repoName +"/issues")
   }
 }

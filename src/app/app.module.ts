@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { HeaderComponent } from './shared/components/header/header.component'; 
 import { DetailsComponent } from './views/details/details.component';
 import { ExplorerComponent } from './views/explorer/explorer.component';
 import { ReposListComponent } from './views/explorer/repos-list/repos-list.component';
@@ -15,10 +16,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card'; 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
-import { HeaderComponent } from './shared/components/header/header.component'; 
+import { StoreModule } from '@ngrx/store'
+import { reposReducer } from './state/app.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 
 @NgModule({
   declarations: [
@@ -40,7 +43,11 @@ import { HeaderComponent } from './shared/components/header/header.component';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({
+      repositories: reposReducer
+    }),
+    StoreDevtoolsModule.instrument(),
   ],
   providers: [],
   bootstrap: [AppComponent]
