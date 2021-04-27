@@ -1,7 +1,7 @@
 <div class="container">
 
     <div fxLayout="row" fxLayoutAlign="space-evenly center" class="mt-5">
-        <mat-card *ngIf="repoInfo" 
+        <mat-card *ngIf="repoInfo$" 
             fxFlex="0 1 70%%"
             fxFlex.lt-md="0 1 85%"
             fxFlex.lt-sm="0 1 100%">
@@ -12,8 +12,8 @@
                 >
 
                 <div class="left">
-                    <mat-card-title>{{repoInfo.name}}</mat-card-title>
-                    <mat-card-subtitle>{{repoInfo.description}}</mat-card-subtitle>
+                    <mat-card-title>{{(repoInfo$ | async)?.name}}</mat-card-title>
+                    <mat-card-subtitle>{{(repoInfo$ | async)?.description}}</mat-card-subtitle>
                 </div>
 
                 <div class="stats" fxLayout="row" 
@@ -24,21 +24,21 @@
                         <small>Stars</small>
                         <div xLayout="row" fxLayoutAlign="middle center">
                             <mat-icon aria-label="Stars">star</mat-icon>
-                            {{repoInfo.stargazers_count}}
+                            {{(repoInfo$ | async)?.stargazers_count}}
                         </div>
                     </mat-card>
                     <mat-card>
                         <small>Forks</small>
                         <div xLayout="row" fxLayoutAlign="middle center">
                             <mat-icon aria-label="Stars">code</mat-icon>
-                            {{repoInfo.forks_count}}
+                            {{(repoInfo$ | async)?.forks_count}}
                         </div>
                     </mat-card>
                     <mat-card>
                         <small>Issues</small>
                         <div xLayout="row" fxLayoutAlign="middle center">
                             <mat-icon aria-label="Stars">article</mat-icon>
-                            {{repoInfo.open_issues_count}}
+                            {{(repoInfo$ | async)?.open_issues_count}}
                         </div>
                     </mat-card>
                 </div >
@@ -51,7 +51,7 @@
                     <h3>Open Issues</h3>
 
                     <div  fxLayout="column" fxLayoutAlign="space-evenly stretch" >
-                        <ng-container *ngFor="let issue of issues; let i = index">
+                        <ng-container *ngFor="let issue of (issues$ | async); let i = index">
                             <mat-card class="issue" (click)="goToIssue(issue)" fxLayout="row" fxLayoutAlign="space-between center" >
                                 <div style="margin-right: 15px;">
                                     <p>{{issue.title}}</p>

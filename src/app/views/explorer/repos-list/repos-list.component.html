@@ -4,7 +4,7 @@
             fxFlex="0 1 calc(33%-2%)"
             fxFlex.lt-md="0 1 calc(50%-2%)"
             fxFlex.lt-sm="0 1 100%"
-            routerLink = "details/{{repository.owner.login}}/{{repository.name}}">
+            routerLink = "details/{{repository.owner?.login}}/{{repository.name}}">
             <mat-card-header>
             </mat-card-header>
             <mat-card-content>

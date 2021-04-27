@@ -5,6 +5,10 @@ import { Repository } from 'src/app/models/repository.model';
 
 import { RepositoriesService } from 'src/app/shared/service/repositories.service';
 
+import { Store, select } from '@ngrx/store'
+import { AppState } from '../../state/app.state'
+import { getRepository, getIssues } from '../../state/app.actions'
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -14,10 +18,13 @@ export class DetailsComponent implements OnInit {
 
   private username!: string;
   private repoName!: string;
-  public repoInfo!: Repository;
-  public issues!: Issue[];
+  // public repoInfo!: Repository;
+  // public issues!: Issue[];
+  repoInfo$ = this.store.pipe(select('repository'))
+  issues$ = this.store.pipe(select('issues'))
 
   constructor(
+    private store: Store<AppState>,
     private _Activatedroute : ActivatedRoute,
     public repoService: RepositoriesService
   ) { 
@@ -28,14 +35,14 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     
     this.repoService.getRepositoryInfo(this.username, this.repoName).subscribe(
-      (repos) => {
-        this.repoInfo = repos;
+      (repository) => {
+        this.store.dispatch(getRepository({ repository }))
       }
     )
 
     this.repoService.getRepositoryIssues(this.username, this.repoName).subscribe(
       (issues) => {
-        this.issues = issues;
+        this.store.dispatch(getIssues({ issues }))
       }
     )
   }

@@ -1,13 +1,30 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { getUsersRepositories } from './app.actions';
+import { getIssues, getRepository, getUsersRepositories } from './app.actions';
 import { Repository } from '../models/repository.model';
+import { Issue } from '../models/issue.model';
+import { issuesInitialState, repositoriesInitialState, repositoryInitialState } from './app.state';
 
-const initilState: Repository[] = [];
 
 export const reposReducer = createReducer<Repository[]>(
-    initilState,
-    on(getUsersRepositories, (state, action) => {
-        return [...action.payload]
+    repositoriesInitialState,
+    on(getUsersRepositories, (state, {repositories}) => {
+        return [...repositories]
+    }),
+);
+
+
+export const repositoryReducer = createReducer<Repository>(
+    repositoryInitialState,
+    on(getRepository, (state, {repository}) => {
+        return {...repository }
+    }),
+);
+
+
+export const issuesReducer = createReducer<Issue[]>(
+    issuesInitialState,
+    on(getIssues, (state, {issues}) => {
+        return [...issues ]
     }),
 );

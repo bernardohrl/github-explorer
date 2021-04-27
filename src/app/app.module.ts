@@ -20,7 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { StoreModule } from '@ngrx/store'
-import { reposReducer } from './state/app.reducers';
+import { reposReducer, repositoryReducer, issuesReducer } from './state/app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 
 @NgModule({
@@ -45,7 +45,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({
-      repositories: reposReducer
+      repositories: reposReducer, 
+      repository: repositoryReducer,
+      issues: issuesReducer
     }),
     StoreDevtoolsModule.instrument(),
   ],

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormControl, ValidatorFn, Validators } from '@angular/forms';
 
 import { Repository } from 'src/app/models/repository.model';
@@ -7,7 +7,6 @@ import { RepositoriesService } from 'src/app/shared/service/repositories.service
 import { Store, select } from '@ngrx/store'
 import { AppState } from '../../state/app.state'
 import { getUsersRepositories } from '../../state/app.actions'
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -24,7 +23,7 @@ export class ExplorerComponent {
 
 
   constructor(
-    public store: Store<AppState>,
+    private store: Store<AppState>,
     public repoService: RepositoriesService,
   ) { }
 
@@ -37,7 +36,7 @@ export class ExplorerComponent {
 
     this.repoService.getUsersRepositories(this.username.value).subscribe(
       (repositories) => {
-        this.store.dispatch(getUsersRepositories({ payload: repositories }))
+        this.store.dispatch(getUsersRepositories({ repositories }))
       }
     )
   }
