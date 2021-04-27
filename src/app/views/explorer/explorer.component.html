@@ -3,7 +3,7 @@
 
         <mat-form-field appearance="outline" >
             <mat-label>Search User</mat-label>
-            <input matInput [formControl]="username">
+            <input matInput [formControl]="username" autocomplete="off">
             <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         
