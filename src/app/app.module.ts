@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store'
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,8 @@ import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { HeaderComponent } from './shared/components/header/header.component'; 
+import { reposReducer } from './state/app.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 
 @NgModule({
   declarations: [
@@ -40,7 +43,11 @@ import { HeaderComponent } from './shared/components/header/header.component';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({
+      usersRepositories: reposReducer
+    }),
+    StoreDevtoolsModule.instrument(),
   ],
   providers: [],
   bootstrap: [AppComponent]
